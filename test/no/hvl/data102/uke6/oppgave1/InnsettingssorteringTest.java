@@ -30,10 +30,10 @@ class InnsettingssorteringTest {
         assertEquals("D", tab4[2]);
         assertEquals("C", tab4[3]);
 
-        Innsettingssortering.innsettingSortering(tab);
-        Innsettingssortering.innsettingSortering(tab2);
-        Innsettingssortering.innsettingSortering(tab3);
-        Innsettingssortering.innsettingSortering(tab4);
+        Innsettingssortering.innsettingSortering2(tab);
+        Innsettingssortering.innsettingSortering2(tab2);
+        Innsettingssortering.innsettingSortering2(tab3);
+        Innsettingssortering.innsettingSortering2(tab4);
 
         assertEquals(1, tab[0]);
         assertEquals(2, tab[1]);

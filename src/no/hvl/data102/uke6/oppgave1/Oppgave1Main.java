@@ -24,7 +24,7 @@ public class Oppgave1Main {
 
         // sorter alle radene
         for (int i = 0; i < antall; i++) {
-            Innsettingssortering.innsettingSortering(a[i]);
+            Innsettingssortering.innsettingSortering2(a[i]);
         }
 
         // slutt tidsmåling

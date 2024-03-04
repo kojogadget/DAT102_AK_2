@@ -9,13 +9,14 @@ public class Innsettingssortering {
      * @param tab tabellen
      */
     public static <T extends Comparable<? super T>> void innsettingSortering2(T[] tab) {
+        // Finner minste verdi og flytter den til første indeks
         int minIndeks = finnMinsteIndeks(tab);
         bytt(tab, 0, minIndeks);
 
+        // Sorterer to og to elementer
         for (int i = 1; i < tab.length - 1; i += 2) {
-            T minste;
-            T storste;
-
+            // Finner minste og storste verdi
+            T minste, storste;
             if (tab[i].compareTo(tab[i + 1]) <= 0) {
                 minste = tab[i];
                 storste = tab[i + 1];
@@ -24,29 +25,32 @@ public class Innsettingssortering {
                 storste = tab[i];
             }
 
-            int j = i;
-            while (j > 0 && tab[j - 1].compareTo(minste) >= 0) {
-                tab[j] = tab[j - 1];
+            int j = i - 1;
+            // Finn riktig plass for største
+            while (j >= 0 && tab[j].compareTo(storste) > 0) {
+                tab[j + 2] = tab[j];
                 j--;
             }
-            tab[j] = minste;
+            tab[j + 2] = storste;
 
-            int k = i + 2;
-            while (k < tab.length - 1 && tab[k].compareTo(storste) < 0) {
-                tab[k - 1] = tab[k];
-                k += 2;
+            // Finn riktig plass for minste
+            while (j >= 0 && tab[j].compareTo(minste) > 0) {
+                tab[j + 1] = tab[j];
+                j--;
             }
-            tab[k - 1] = storste;
+            tab[j + 1] = minste;
         }
 
         // Hvis tabellen har et partall antall elementer vil ikke det siste elementet bli sortert
         // Derfor sorterer vi det siste elementet her
         if (tab.length % 2 == 0) {
-            int j = tab.length - 1;
-            while (j >= 0 && tab[j].compareTo(tab[j - 1]) < 0) {
-                bytt(tab, j, j - 1);
+            T siste = tab[tab.length - 1];
+            int j = tab.length - 2;
+            while (j >= 0 && tab[j].compareTo(siste) > 0) {
+                tab[j + 1] = tab[j];
                 j--;
             }
+            tab[j + 1] = siste;
         }
     }
 
