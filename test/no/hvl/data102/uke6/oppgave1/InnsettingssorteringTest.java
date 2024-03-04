@@ -1,4 +1,4 @@
-package no.hvl.data102.uke6;
+package no.hvl.data102.uke6.oppgave1;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
