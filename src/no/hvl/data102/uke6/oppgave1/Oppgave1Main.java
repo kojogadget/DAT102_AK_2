@@ -29,7 +29,7 @@ public class Oppgave1Main {
         start = (int) System.currentTimeMillis();           
         
         for (int i = 0; i < antall; i++) {
-            Innsettingssortering.innsettingSortering2(a[i]);
+            Innsettingssortering.innsettingSortering2(b[i]);
         }
 
         slutt = (int) System.currentTimeMillis();          
