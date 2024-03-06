@@ -5,32 +5,46 @@ import java.util.Random;
 public class Oppgave1Main {
         
     public static void main(String[] args) {
-        
-        Random tilfeldig = new Random();
         int n = 32000;
         int antall = 10;
 
         Integer[][] a = new Integer[antall][n];
+        Integer[][] b = new Integer[antall][n];
 
-        // set inn tilfeldige heltall i alle rekkene
+        lagRandomListe(a, antall, n);
+        lagRandomListe(b, antall, n);
+
+        // Test kjøretid på vanlig innsettingssortering
+        long start = (int) System.currentTimeMillis();         
+        
         for (int i = 0; i < antall; i++) {
-            for (int j = 0; j < n; j++) {
-                a[i][j] = tilfeldig.nextInt();
-            }
+            Innsettingssortering.innsettingSortering(a[i]);  
         }
+       
+        long slutt = (int) System.currentTimeMillis();        
 
-        // start tidsmåling
-        long start = (int) System.currentTimeMillis();
-
-        // sorter alle radene
+        System.out.println("Tid vanlig: " + ((slutt - start) / 1000F) + " sekunder");
+       
+        // Test kjøretid på modifisert innsettingssortering
+        start = (int) System.currentTimeMillis();           
+        
         for (int i = 0; i < antall; i++) {
             Innsettingssortering.innsettingSortering2(a[i]);
         }
 
-        // slutt tidsmåling
-        long slutt = (int) System.currentTimeMillis();
+        slutt = (int) System.currentTimeMillis();          
 
-        System.out.println("Tid: " + ((slutt - start) / 1000F) + " sekunder");
+        System.out.println("Tid modifisert: " + ((slutt - start) / 1000F) + " sekunder");
+    }
+
+    private static void lagRandomListe(Integer[][] tab, int antall, int n) {
+        Random tilfeldig = new Random();
+
+        for (int i = 0; i < antall; i++) {
+            for (int j = 0; j < n; j++) {
+                tab[i][j] = tilfeldig.nextInt();
+            }
+        }
 
     }
 }
